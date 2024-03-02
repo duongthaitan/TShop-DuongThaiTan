@@ -25,8 +25,16 @@ class MenuController extends Controller
 
     public function store(CreateFormRequest $request)
     {
-       $result = $this->menuServices->create($request);
+       $this->menuServices->create($request);
 
        return redirect()->back();
+    }
+
+    public function index()
+    {
+        return view('admin.menu.list',[
+           'title' => 'Danh sách Danh Mục mới nhất',
+            'menus' => $this->menuServices->getAll(),
+        ]);
     }
 }
