@@ -4,5 +4,7 @@
 <script src="/template/admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="/template/admin/dist/js/adminlte.min.js"></script>
+<!-- ckeditor -->
+<script src="https://cdn.ckeditor.com/ckeditor5/41.2.0/classic/ckeditor.js"></script>
 
 @yield('footer')
