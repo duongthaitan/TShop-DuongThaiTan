@@ -4,11 +4,11 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
+                <th style="width: 50px">Id</th>
                 <th>Name</th>
                 <th>Active</th>
                 <th>Update</th>
-                <th>&nbsp;</th>
+                <th style="width: 100px">&nbsp;</th>
             </tr>
         </thead>
 

@@ -10,20 +10,28 @@ class Helper
 
         foreach ($menus as $key => $menu){
             if($menu->parent_id == $parent_id){
-                $html .=
-                    '
+                $html .= '
             <tr>
-                <th>'.$menu->id.'</th>
-                <th>'.$char.$menu->name.'</th>
-                <th>'.$menu->active.'</th>
-                <th>'.$menu->updated_at.'</th>
-                <th>&nbsp;</th>
+                <td>'.$menu->id.'</td>
+                <td>'.$char.$menu->name.'</td>
+                <td>'.$menu->active.'</td>
+                <td>'.$menu->updated_at.'</td>
+                <td>
+                 <a class="btn btn-primary btn-sm" href="/admin/menus/edit/ ' . $menu->id . '">
+                    <i class="fa-solid fa-pen"></i>
+                 </a>
+
+                <a class="btn btn-danger btn-sm" href="#"
+                    onclick="removeRow(' . $menu->id . ',\'/admin/menus/destroy\')">
+                    <i class="fa-solid fa-trash"></i>
+                </a>
+                </td>
             </tr>
-                ';
+            ';
 
                 unset($menus[$key]);
 
-                $html .= self::menu($menus, $menu->id,$char .'--');
+                $html .= self::menu($menus, $menu->id,$char .'  |--');
             }
         }
         return $html;
