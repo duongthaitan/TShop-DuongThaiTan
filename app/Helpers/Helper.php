@@ -14,16 +14,16 @@ class Helper
             <tr>
                 <td>'.$menu->id.'</td>
                 <td>'.$char.$menu->name.'</td>
-                <td>'.$menu->active.'</td>
+                <td>'.self::active($menu->active).'</td>
                 <td>'.$menu->updated_at.'</td>
                 <td>
                  <a class="btn btn-primary btn-sm" href="/admin/menus/edit/ ' . $menu->id . '">
-                    <i class="fa-solid fa-pen"></i>
+                    <i class="fas fa-edit"></i>
                  </a>
 
                 <a class="btn btn-danger btn-sm" href="#"
                     onclick="removeRow(' . $menu->id . ',\'/admin/menus/destroy\')">
-                    <i class="fa-solid fa-trash"></i>
+                    <i class="fas fa-trash"></i>
                 </a>
                 </td>
             </tr>
@@ -36,4 +36,9 @@ class Helper
         }
         return $html;
     }
+    public static function active($active = 0) : string
+    {
+       return $active == 0 ? '<span class="btn btn-danger btn-circle btn-sm">NO</span>' : '<span class="btn btn-success btn-circle btn-sm">YES</span>';
+    }
+
 }

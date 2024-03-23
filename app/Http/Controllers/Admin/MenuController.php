@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Menu\CreateFormRequest;
 use App\Http\Services\Menu\MenuService;
+use App\Models\Menu;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 class MenuController extends Controller
@@ -37,6 +38,22 @@ class MenuController extends Controller
            'title' => 'Danh sách Danh Mục mới nhất',
             'menus' => $this->menuServices->getAll(),
         ]);
+    }
+
+    public function show(Menu $menu)
+    {
+        return view('admin.menu.edit',[
+            'title' => 'Chỉnh sửa Danh Mục ' . $menu->name,
+            'menu' => $menu,
+            'menus' => $this->menuServices->getParent(),
+        ]);
+    }
+
+    public function update(Menu $menu, CreateFormRequest $request)
+    {
+        $this->menuServices->update($request, $menu);
+
+        return redirect('/admin/menus/list');
     }
 
     public  function destroy(Request $request): JsonResponse

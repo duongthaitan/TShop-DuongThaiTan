@@ -43,6 +43,23 @@ class MenuService
         return true;
     }
 
+    public function update($request, $menu) : bool
+    {
+        if($request->input('parent_id') != $menu->id)
+        {
+            $menu->parent_id = (int) $request->input('parent_id');
+        }
+
+        $menu->name = (string) $request->input('name');
+        $menu->description = (string) $request->input('description');
+        $menu->content = (string) $request->input('content');
+        $menu->active = (string) $request->input('active');
+        $menu->save();
+
+        Session::flash('success','Cập nhật danh mục thành công');
+        return true;
+    }
+
     public function destroy($request)
     {
 
